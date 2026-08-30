@@ -1,94 +1,117 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Catálogo de productos para clientes con galería e información de contacto."
-    />
-    <title>Cliente Catálogo</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/main.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <nav class="navbar navbar-expand-lg">
-        <div class="container">
-          <a class="navbar-brand" href="#top">
-            <img src="assets/img/logo/logo.svg" alt="Logo de la marca" class="brand-logo" />
-            <span>Tu Marca</span>
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#mainNav"
-            aria-controls="mainNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="mainNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item"><a class="nav-link" href="#catalogo">Catálogo</a></li>
-              <li class="nav-item"><a class="nav-link" href="#galeria">Galería</a></li>
-              <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nombre Negocio | Maquetas Arquitectónicas y Corte Láser</title>
+  <meta name="description" content="Maquetas arquitectónicas, moldes de corte y grabado láser de alta precisión. Catálogo, cotización directa por WhatsApp.">
 
-    <main id="top">
-      <section class="hero">
-        <div class="container text-center">
-          <p class="eyebrow">Productos destacados</p>
-          <h1>Descubre nuestra selección</h1>
-          <p class="lead">Calidad, estilo y atención personalizada para cada cliente.</p>
-        </div>
-      </section>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
 
-      <section id="catalogo" class="catalogo-section">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Catálogo</p>
-            <h2>Productos disponibles</h2>
-          </div>
-          <div id="catalogoGrid" class="catalogo-grid"></div>
-        </div>
-      </section>
-
-      <section id="galeria" class="galeria-section">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Galería</p>
-            <h2>Inspiración visual</h2>
-          </div>
-          <div id="galeriaGrid" class="galeria-grid"></div>
-        </div>
-      </section>
-    </main>
-
-    <footer id="contacto" class="site-footer">
+  <!-- HEADER / NAVBAR -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container">
-        <p>© 2026 Tu Marca. Todos los derechos reservados.</p>
-        <a href="https://wa.me/521234567890?text=Hola%2C%20quiero%20más%20información%20sobre%20sus%20productos" target="_blank" rel="noreferrer">
-          Contactar por WhatsApp
+        <a class="navbar-brand" href="#">Nombre Negocio</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#catalogo">Catálogo</a></li>
+            <li class="nav-item"><a class="nav-link" href="#galeria">Galería</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero d-flex align-items-center">
+    <div class="container text-center">
+      <p class="hero-coord">142.5mm · 0.02mm precisión</p>
+      <h1 class="hero-title">Maquetas y cortes de precisión<br>hechos con láser</h1>
+      <p class="hero-subtitle">Arquitectura, moldes y grabado a la medida exacta de tu proyecto</p>
+      <a href="#contacto" class="btn btn-accent btn-lg mt-3">Cotizar por WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- CATÁLOGO -->
+  <section id="catalogo" class="container py-5">
+    <h2 class="section-title text-center mb-5">Catálogo de Productos</h2>
+    <div class="row g-4" id="catalogo-grid">
+      <!-- renderCatalogo.js inyecta las cards de productos aquí -->
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section id="galeria" class="container py-5">
+    <h2 class="section-title text-center mb-5">Galería de Trabajos</h2>
+    <div class="row g-3" id="galeria-grid">
+      <div class="col-6 col-md-4 col-lg-3">
+        <img src="assets/img/galeria/trabajo1.jpg" class="img-fluid rounded gallery-img" alt="Trabajo realizado 1" loading="lazy">
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <img src="assets/img/galeria/trabajo2.jpg" class="img-fluid rounded gallery-img" alt="Trabajo realizado 2" loading="lazy">
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <img src="assets/img/galeria/trabajo3.jpg" class="img-fluid rounded gallery-img" alt="Trabajo realizado 3" loading="lazy">
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <img src="assets/img/galeria/trabajo4.jpg" class="img-fluid rounded gallery-img" alt="Trabajo realizado 4" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- UBICACIÓN / CONTACTO -->
+  <section id="contacto" class="container py-5">
+    <h2 class="section-title text-center mb-5">Ubicación y Contacto</h2>
+    <div class="row g-4 align-items-center">
+      <div class="col-md-6">
+        <ul class="list-unstyled fs-5 contact-list">
+          <li class="mb-3"><i class="bi bi-geo-alt-fill me-2 accent-icon"></i> Dirección del negocio, Cali, Colombia</li>
+          <li class="mb-3"><i class="bi bi-telephone-fill me-2 accent-icon"></i> +57 XXX XXX XXXX</li>
+          <li class="mb-3"><i class="bi bi-envelope-fill me-2 accent-icon"></i> correo@negocio.com</li>
+          <li class="mb-3"><i class="bi bi-clock-fill me-2 accent-icon"></i> Lun - Sáb: 9:00 a.m. - 6:00 p.m.</li>
+        </ul>
+        <a id="btn-whatsapp" href="#" class="btn btn-accent btn-lg">
+          <i class="bi bi-whatsapp me-2"></i>Pedir por WhatsApp
         </a>
       </div>
-    </footer>
+      <div class="col-md-6">
+        <div class="ratio ratio-4x3 map-frame">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=TU_EMBED_AQUI"
+            style="border:0;" allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <a href="https://wa.me/521234567890?text=Hola%2C%20quiero%20más%20información%20sobre%20sus%20productos" class="whatsapp-button" aria-label="WhatsApp" target="_blank" rel="noreferrer">
-      WhatsApp
-    </a>
+  <!-- FOOTER -->
+  <footer class="py-4 mt-5">
+    <div class="container text-center">
+      <p class="mb-1">© 2026 Nombre del Negocio. Todos los derechos reservados.</p>
+      <p class="mb-0 small">Sitio desarrollado por <strong>Sebas</strong></p>
+    </div>
+  </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="module" src="js/main.js"></script>
-  </body>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- App JS (módulo ES6) -->
+  <script type="module" src="js/main.js"></script>
+</body>
 </html>
