@@ -57,9 +57,15 @@ h1, h2, h3, .navbar-brand, .eyebrow {
 }
 
 .brand-logo {
-  width: 46px;
-  height: 46px;
+  width: clamp(110px, 16vw, 200px);
+  height: auto;
   object-fit: contain;
+  display: block;
+}
+
+.navbar-toggler {
+  border: 1px solid rgba(13, 23, 33, 0.12);
+  padding: 0.45rem 0.7rem;
 }
 
 .navbar-nav { gap: 0.55rem; }
@@ -98,11 +104,70 @@ h1, h2, h3, .navbar-brand, .eyebrow {
 }
 
 .hero {
-  background:
-    linear-gradient(135deg, rgba(7, 19, 31, 0.82), rgba(15, 52, 78, 0.7)),
-    url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+  position: relative;
+  overflow: hidden;
   color: #fff;
   padding: 6.5rem 0 5rem;
+  background: var(--secondary);
+}
+
+.hero-slides {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.12);
+  animation: heroFade 20s infinite;
+}
+
+.hero-slide-1 {
+  background-image:
+    linear-gradient(135deg, rgba(7, 19, 31, 0.82), rgba(15, 52, 78, 0.7)),
+    url('../assets/img/logo/fondo.jpg');
+  animation-delay: 0s;
+}
+
+.hero-slide-2 {
+  background-image:
+    linear-gradient(135deg, rgba(7, 19, 31, 0.82), rgba(15, 52, 78, 0.7)),
+    url('../assets/img/logo/fondo1.jpg');
+  background-position: 30% center;
+  animation-delay: 5s;
+}
+
+.hero-slide-3 {
+  background-image:
+    linear-gradient(135deg, rgba(7, 19, 31, 0.82), rgba(15, 52, 78, 0.7)),
+    url('../assets/img/logo/fondo2.jpg');
+  background-position: 70% center;
+  animation-delay: 10s;
+}
+
+.hero .hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes heroFade {
+  0% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+  18%, 32% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+  42%, 100% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
 }
 
 .hero-content {
@@ -472,6 +537,12 @@ h1, h2, h3, .navbar-brand, .eyebrow {
 
 @media (max-width: 991.98px) {
   .navbar-brand { font-size: 1.3rem; }
+  .brand-logo {
+    width: clamp(80px, 20vw, 130px);
+  }
+  .navbar-nav {
+    padding-top: 0.75rem;
+  }
   .hero { padding-top: 5rem; }
   .galeria-item {
     flex: 0 0 50%;
@@ -483,6 +554,23 @@ h1, h2, h3, .navbar-brand, .eyebrow {
   .section { padding: 4rem 0; }
   .hero { padding-top: 4rem; }
   .hero h1 { font-size: 2.6rem; }
+  .navbar {
+    padding: 0.6rem 0;
+  }
+  .navbar-brand {
+    font-size: 1.1rem;
+    gap: 0.5rem;
+  }
+  .brand-logo {
+    width: 74px;
+  }
+  .navbar-nav {
+    gap: 0.25rem;
+  }
+  .nav-link {
+    padding: 0.4rem 0.55rem !important;
+    font-size: 0.92rem;
+  }
   .galeria-item {
     flex: 0 0 100%;
     max-width: 100%;
