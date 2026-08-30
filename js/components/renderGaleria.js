@@ -1,7 +1,7 @@
 import { createElement } from '../utils/helpers.js';
 
 export function renderGaleria(imagenes, containerId) {
-  const container = document.getElementById(containerId);
+  const container = document.querySelector(containerId.startsWith('#') ? containerId : `#${containerId}`);
   if (!container) return;
 
   const fragment = document.createDocumentFragment();
@@ -10,7 +10,8 @@ export function renderGaleria(imagenes, containerId) {
     const item = createElement('figure', 'galeria-item');
     const image = document.createElement('img');
     image.src = src;
-    image.alt = 'Imagen de la galería';
+    image.alt = 'Proyecto de Mundo Láser EC';
+    image.loading = 'lazy';
     item.appendChild(image);
     fragment.appendChild(item);
   });

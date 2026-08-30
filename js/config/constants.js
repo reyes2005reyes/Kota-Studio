@@ -1,6 +1,4 @@
-export const CONFIG = {
-  whatsappNumber: '521234567890',
-  whatsappMessage: 'Hola, quiero más información sobre sus productos',
-  catalogoTitle: 'Catálogo de productos',
-  galeriaTitle: 'Galería',
-};
+export const WHATSAPP_NUMBER = '593998968151';
+export const WHATSAPP_MESSAGE = 'Hola, quiero más información sobre sus servicios';
+export const CATALOG_TITLE = 'Catálogo de productos';
+export const GALERIA_TITLE = 'Galería';

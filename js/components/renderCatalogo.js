@@ -1,13 +1,13 @@
 import { createElement } from '../utils/helpers.js';
 
 export function renderCatalogo(productos, containerId) {
-  const container = document.getElementById(containerId);
+  const container = document.querySelector(containerId.startsWith('#') ? containerId : `#${containerId}`);
   if (!container) return;
 
   const fragment = document.createDocumentFragment();
 
   productos.forEach((producto) => {
-    const card = createElement('article', 'producto-card');
+    const card = createElement('article', 'producto-card col-md-6 col-xl-4');
 
     const image = document.createElement('img');
     image.src = producto.imagen;
@@ -18,7 +18,7 @@ export function renderCatalogo(productos, containerId) {
     const price = createElement('div', 'precio', producto.precio);
     const description = createElement('p', 'descripcion', producto.descripcion);
     const button = createElement('a', 'btn btn-primary', 'Solicitar');
-    button.href = 'https://wa.me/521234567890?text=Hola%2C%20quiero%20más%20información%20sobre%20' + encodeURIComponent(producto.nombre);
+    button.href = 'https://wa.me/593998968151?text=' + encodeURIComponent(`Hola, quiero más información sobre ${producto.nombre}`);
     button.target = '_blank';
     button.rel = 'noreferrer';
 

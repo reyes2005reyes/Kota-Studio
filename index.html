@@ -3,115 +3,219 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nombre Negocio | Maquetas Arquitectónicas y Corte Láser</title>
-  <meta name="description" content="Maquetas arquitectónicas, moldes de corte y grabado láser de alta precisión. Catálogo, cotización directa por WhatsApp.">
+  <title>Kota Studio</title>
+  <meta name="description" content="Corte, grabado y calado láser para arquitectura, impresión, materiales y mobiliario a escala en Ecuador.">
 
-  <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <!-- Estilos propios -->
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-
-  <!-- HEADER / NAVBAR -->
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark">
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg">
       <div class="container">
-        <a class="navbar-brand" href="#">Nombre Negocio</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <a class="navbar-brand" href="#inicio" aria-label="Kota Studio home">
+          <img src="assets/img/logo/logo.svg" alt="Logo Kota Studio" class="brand-logo">
+          <span>Kota Studio</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Abrir menú">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navMenu">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="#catalogo">Catálogo</a></li>
-            <li class="nav-item"><a class="nav-link" href="#galeria">Galería</a></li>
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+            <li class="nav-item"><a class="nav-link" href="#catalogo">Tienda</a></li>
+            <li class="nav-item"><a class="nav-link" href="#materiales">Materiales</a></li>
             <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+            <li class="nav-item ms-lg-3"><a class="btn btn-primary btn-sm" href="https://wa.me/593987426825?text=Hola%2C%20quiero%20consultar%20un%20servicio" target="_blank" rel="noreferrer">Cotizar</a></li>
           </ul>
         </div>
       </div>
     </nav>
   </header>
 
-  <!-- HERO -->
-  <section class="hero d-flex align-items-center">
-    <div class="container text-center">
-      <p class="hero-coord">142.5mm · 0.02mm precisión</p>
-      <h1 class="hero-title">Maquetas y cortes de precisión<br>hechos con láser</h1>
-      <p class="hero-subtitle">Arquitectura, moldes y grabado a la medida exacta de tu proyecto</p>
-      <a href="#contacto" class="btn btn-accent btn-lg mt-3">Cotizar por WhatsApp</a>
-    </div>
-  </section>
-
-  <!-- CATÁLOGO -->
-  <section id="catalogo" class="container py-5">
-    <h2 class="section-title text-center mb-5">Catálogo de Productos</h2>
-    <div class="row g-4" id="catalogo-grid">
-      <!-- renderCatalogo.js inyecta las cards de productos aquí -->
-    </div>
-  </section>
-
-  <!-- GALERÍA -->
-  <section id="galeria" class="container py-5">
-    <h2 class="section-title text-center mb-5">Galería de Trabajos</h2>
-    <div class="row g-3" id="galeria-grid">
-      <div class="col-6 col-md-4 col-lg-3">
-        <img src="assets/img/galeria/trabajo1.jpg" class="img-fluid rounded gallery-img" alt="Trabajo realizado 1" loading="lazy">
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <img src="assets/img/galeria/trabajo2.jpg" class="img-fluid rounded gallery-img" alt="Trabajo realizado 2" loading="lazy">
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <img src="assets/img/galeria/trabajo3.jpg" class="img-fluid rounded gallery-img" alt="Trabajo realizado 3" loading="lazy">
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <img src="assets/img/galeria/trabajo4.jpg" class="img-fluid rounded gallery-img" alt="Trabajo realizado 4" loading="lazy">
-      </div>
-    </div>
-  </section>
-
-  <!-- UBICACIÓN / CONTACTO -->
-  <section id="contacto" class="container py-5">
-    <h2 class="section-title text-center mb-5">Ubicación y Contacto</h2>
-    <div class="row g-4 align-items-center">
-      <div class="col-md-6">
-        <ul class="list-unstyled fs-5 contact-list">
-          <li class="mb-3"><i class="bi bi-geo-alt-fill me-2 accent-icon"></i> Dirección del negocio, Cali, Colombia</li>
-          <li class="mb-3"><i class="bi bi-telephone-fill me-2 accent-icon"></i> +57 XXX XXX XXXX</li>
-          <li class="mb-3"><i class="bi bi-envelope-fill me-2 accent-icon"></i> correo@negocio.com</li>
-          <li class="mb-3"><i class="bi bi-clock-fill me-2 accent-icon"></i> Lun - Sáb: 9:00 a.m. - 6:00 p.m.</li>
-        </ul>
-        <a id="btn-whatsapp" href="#" class="btn btn-accent btn-lg">
-          <i class="bi bi-whatsapp me-2"></i>Pedir por WhatsApp
-        </a>
-      </div>
-      <div class="col-md-6">
-        <div class="ratio ratio-4x3 map-frame">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=TU_EMBED_AQUI"
-            style="border:0;" allowfullscreen loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
+  <main id="inicio">
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-7">
+            <p class="eyebrow">Tu aliado gráfico en arquitectura</p>
+            <h1>Corte, grabado y soluciones para maquetas arquitectónicas.</h1>
+            <p class="subtitle">Especialistas en precisión, materiales y asesoría técnica para estudiantes y profesionales de arquitectura.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary btn-lg" href="https://wa.me/593987426825?text=Hola%2C%20quiero%20más%20información%20sobre%20sus%20servicios" target="_blank" rel="noreferrer">Solicitar presupuesto</a>
+              <a class="btn btn-outline-light btn-lg" href="#servicios">Ver servicios</a>
+            </div>
+            <ul class="hero-points">
+              <li><i class="bi bi-check2-circle"></i> Corte láser en MDF, acrílico y materiales especiales</li>
+              <li><i class="bi bi-check2-circle"></i> Impresión, plotter y banner arquitectónico</li>
+              <li><i class="bi bi-check2-circle"></i> Asesoría técnica para maquetas y presentaciones</li>
+            </ul>
+          </div>
+          <div class="col-lg-5">
+            <div class="hero-card">
+              <div class="hero-badge">Calidad + precisión</div>
+              <div class="mini-grid">
+                <span>Co2</span>
+                <span>Plotter</span>
+                <span>Maquetas</span>
+                <span>Materiales</span>
+              </div>
+              <div class="hero-stat">
+                <strong>+1.000</strong>
+                <small>proyectos entregados</small>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="py-4 mt-5">
-    <div class="container text-center">
-      <p class="mb-1">© 2026 Nombre del Negocio. Todos los derechos reservados.</p>
-      <p class="mb-0 small">Sitio desarrollado por <strong>Sebas</strong></p>
+    <section id="servicios" class="section">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="eyebrow center">Nuestros servicios</p>
+          <h2>Soluciones integrales para cada etapa de tu proyecto</h2>
+        </div>
+        <div class="row g-4 services-grid">
+          <div class="col-md-6 col-xl-3">
+            <article class="service-card">
+              <div class="icon-wrap"><i class="bi bi-scissors"></i></div>
+              <h3>Corte y grabado láser</h3>
+              <p>Precisión en MDF, acrílicos, cartones, balsa y materiales especiales para maquetas y presentaciones.</p>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <article class="service-card">
+              <div class="icon-wrap"><i class="bi bi-printer"></i></div>
+              <h3>Impresión y plotter</h3>
+              <p>Impresiones y copias de alta resolución para planos, láminas, pancartas y gigantografías.</p>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <article class="service-card">
+              <div class="icon-wrap"><i class="bi bi-box-seam"></i></div>
+              <h3>Suministros técnico</h3>
+              <p>Materiales para maquetear, detalles arquitectónicos y ventas al por mayor y menor con asesoría.</p>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <article class="service-card">
+              <div class="icon-wrap"><i class="bi bi-house-door"></i></div>
+              <h3>Mobiliario a escala</h3>
+              <p>Diseño y elaboración de personas, muebles y elementos para maquetas arquitectónicas.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalogo" class="section alt-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="eyebrow center">Compra en nuestra tienda</p>
+          <h2>Materiales y productos para tu trabajo de arquitectura</h2>
+        </div>
+        <div class="row g-4" id="catalogo-grid"></div>
+      </div>
+    </section>
+
+    <section id="galeria" class="section">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="eyebrow center">Trabajos destacados</p>
+          <h2>Galería de maquetas y proyectos realizados</h2>
+        </div>
+        <div class="row g-3 gallery-grid" id="galeria-grid"></div>
+      </div>
+    </section>
+
+    <section id="materiales" class="section materials-section">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <p class="eyebrow">Materiales de trabajo</p>
+            <h2>Trabajamos con una amplia variedad de materiales para tus proyectos.</h2>
+            <p>Tenemos materiales en diferentes texturas, espesores y dimensiones para cada necesidad de diseño y funcionalidad.</p>
+            <ul class="materials-list">
+              <li><i class="bi bi-check-circle"></i> MDF y acrílicos</li>
+              <li><i class="bi bi-check-circle"></i> Cartones, balsa y fomix</li>
+              <li><i class="bi bi-check-circle"></i> Corcho, cartulinas y papelería</li>
+              <li><i class="bi bi-check-circle"></i> Suministros para maquetas y presentación</li>
+            </ul>
+            <a class="btn btn-primary" href="https://wa.me/593987426825?text=Hola%2C%20quisiera%20consultar%20materiales%20para%20maqueta" target="_blank" rel="noreferrer">Consulta materiales</a>
+          </div>
+          <div class="col-lg-6">
+            <div class="materials-cards">
+              <div class="material-card top">Acrílico</div>
+              <div class="material-card mid">Cartón</div>
+              <div class="material-card bottom">Balsa</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="section contact-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="eyebrow center">Contacto</p>
+          <h2>Estamos listos para ayudarte con tu próximo proyecto</h2>
+        </div>
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-5">
+            <div class="contact-card">
+              <ul class="contact-list list-unstyled">
+                <li><i class="bi bi-geo-alt-fill"></i> Av. La Gasca Oe6-123 y Mena de Valenzuela, Quito – Ecuador</li>
+                <li><i class="bi bi-telephone-fill"></i> <a href="tel:+593987426825">0998968151</a> / <a href="tel:+593992726214">0992726214</a></li>
+                <li><i class="bi bi-envelope-fill"></i> <a href="mailto:kotastudiod@gmail.com">kotastudiod@gmail.com</a></li>
+                <li><i class="bi bi-clock-fill"></i> Lun - Sáb: 9:00 - 18:00</li>
+              </ul>
+              <div class="contact-actions">
+                <a id="btn-whatsapp" class="btn btn-accent"
+                  href="https://wa.me/593987426825?text=Hola%2C%20necesito%20asesor%C3%ADa%20para%20mi%20proyecto"
+                  target="_blank" rel="noreferrer">
+                  <i class="bi bi-whatsapp me-2"></i>WhatsApp
+                </a>
+                <a class="btn btn-outline-dark" href="mailto:kotastudiod@gmail.com">Enviar correo</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="map-frame">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d249.36078787884722!2d-78.49387372897624!3d-0.2742757645885436!3m2!1i1024!2i768!4f13.1!2m1!1sEquifrio%20J.J!5e0!3m2!1ses!2sco!4v1788117873405!5m2!1ses!2sco"
+                style="border:0;" allowfullscreen loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin">
+                title="Mapa de ubicación Kota Studio">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-brand">Kota Studio</p>
+        <p>Tu aliado gráfico en arquitectura.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#catalogo">Tienda</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div>
+        <p>© 2026 Kota Studio</p>
+      </div>
     </div>
   </footer>
 
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- App JS (módulo ES6) -->
   <script type="module" src="js/main.js"></script>
 </body>
 </html>
