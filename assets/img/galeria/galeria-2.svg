@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 360" role="img" aria-label="Galería 2 placeholder">
+  <rect width="500" height="360" fill="#ecfdf5"/>
+  <rect x="50" y="80" width="400" height="200" rx="18" fill="#34d399"/>
+  <path d="M100 240 C170 150, 220 120, 260 150 S350 220, 400 140" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,54 @@
+@import url('./base/variables.css');
+@import url('./base/reset.css');
+@import url('./layout/header.css');
+@import url('./layout/footer.css');
+@import url('./components/navbar.css');
+@import url('./components/card-producto.css');
+@import url('./components/boton-whatsapp.css');
+@import url('./components/galeria.css');
+
+:root {
+  --container: var(--container-width);
+}
+
+.container {
+  width: min(var(--container), calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.hero {
+  padding: 5rem 0 3rem;
+  background: linear-gradient(135deg, rgba(31, 78, 121, 0.96), rgba(20, 58, 91, 0.9));
+  color: var(--color-white);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.catalogo-section,
+.galeria-section {
+  padding: 4rem 0;
+}
+
+.catalogo-grid,
+.galeria-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.catalogo-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.galeria-grid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}

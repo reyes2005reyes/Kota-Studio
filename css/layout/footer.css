@@ -1,0 +1,11 @@
+.site-footer {
+  padding: 2rem 0;
+  background: #0f172a;
+  color: var(--color-white);
+  text-align: center;
+}
+
+.site-footer a {
+  color: var(--color-white);
+  text-decoration: underline;
+}

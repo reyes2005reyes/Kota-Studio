@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 360" role="img" aria-label="Galería 3 placeholder">
+  <rect width="500" height="360" fill="#fff7ed"/>
+  <rect x="70" y="65" width="360" height="230" rx="24" fill="#f59e0b"/>
+  <circle cx="200" cy="165" r="48" fill="#ffffff" opacity="0.8"/>
+  <rect x="273" y="126" width="96" height="80" rx="12" fill="#ffffff" opacity="0.8"/>
+</svg>

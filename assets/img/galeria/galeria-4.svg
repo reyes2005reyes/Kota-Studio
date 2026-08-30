@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 360" role="img" aria-label="Galería 4 placeholder">
+  <rect width="500" height="360" fill="#f3e8ff"/>
+  <rect x="90" y="90" width="320" height="180" rx="20" fill="#8b5cf6"/>
+  <path d="M146 230 L220 150 L275 205 L330 140 L372 230 Z" fill="#ffffff" opacity="0.85"/>
+</svg>

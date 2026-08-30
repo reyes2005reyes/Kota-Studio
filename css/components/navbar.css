@@ -1,0 +1,11 @@
+.navbar {
+  padding: 1rem 0;
+}
+
+.navbar-toggler {
+  border: 1px solid var(--color-border);
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
+}

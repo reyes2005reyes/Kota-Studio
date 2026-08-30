@@ -1,0 +1,17 @@
+.galeria-item {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  background: var(--color-white);
+}
+
+.galeria-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.25s ease;
+}
+
+.galeria-item:hover img {
+  transform: scale(1.05);
+}
