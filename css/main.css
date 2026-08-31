@@ -1,8 +1,8 @@
 :root {
   --primary: #f39c12;
   --primary-dark: #d9860a;
-  --secondary: #0b1f2d;
-  --secondary-2: #173a4f;
+  --secondary: #254a63;
+  --secondary-2: #3a6a8a;
   --bg-soft: #f3f6f9;
   --surface: #ffffff;
   --text: #0d1721;
@@ -129,14 +129,14 @@ h1, h2, h3, .navbar-brand, .eyebrow {
 
 .hero-slide-1 {
   background-image:
-    linear-gradient(135deg, rgba(7, 19, 31, 0.82), rgba(15, 52, 78, 0.7)),
+    linear-gradient(135deg, rgba(37, 74, 99, 0.75), rgba(58, 106, 138, 0.65)),
     url('../assets/img/logo/fondo.jpg');
   animation-delay: 0s;
 }
 
 .hero-slide-2 {
   background-image:
-    linear-gradient(135deg, rgba(7, 19, 31, 0.82), rgba(15, 52, 78, 0.7)),
+    linear-gradient(135deg, rgba(37, 74, 99, 0.75), rgba(58, 106, 138, 0.65)),
     url('../assets/img/logo/fondo1.jpg');
   background-position: 30% center;
   animation-delay: 5s;
@@ -144,7 +144,7 @@ h1, h2, h3, .navbar-brand, .eyebrow {
 
 .hero-slide-3 {
   background-image:
-    linear-gradient(135deg, rgba(7, 19, 31, 0.82), rgba(15, 52, 78, 0.7)),
+    linear-gradient(135deg, rgba(37, 74, 99, 0.75), rgba(58, 106, 138, 0.65)),
     url('../assets/img/logo/fondo2.jpg');
   background-position: 70% center;
   animation-delay: 10s;
@@ -294,7 +294,7 @@ h1, h2, h3, .navbar-brand, .eyebrow {
 }
 
 .about-box {
-  background: #7dc2c7;
+  background: #a8dfe3;
   border-radius: 22px;
   padding: 2.5rem 3.5rem;
   display: flex;
