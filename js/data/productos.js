@@ -32,3 +32,10 @@ export const galeria = [
   'assets/img/galeria/galeria-3.svg',
   'assets/img/galeria/galeria-4.svg',
 ];
+
+export const maquinaGaleria = [
+  'assets/img/galeria/maquina.webp',
+  'assets/img/galeria/maquina1.webp',
+  'assets/img/galeria/maquina2.webp',
+  'assets/img/galeria/maquina3.webp',
+];
