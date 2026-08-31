@@ -18,6 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components/chat-widget.css">
 </head>
 <body>
   <header class="site-header">
@@ -224,6 +225,23 @@
   <a class="floating-whatsapp" href="https://wa.me/593987426825?text=Hola%2C%20quiero%20consultar%20un%20servicio" target="_blank" rel="noreferrer" aria-label="WhatsApp">
     <i class="bi bi-whatsapp"></i>
   </a>
+
+  <!-- Chat Widget -->
+  <div class="chat-container">
+    <button id="chat-toggle" aria-label="Abrir chat" title="¿Necesitas ayuda?">
+      <i class="bi bi-chat-dots"></i>
+    </button>
+    <div id="chat-widget">
+      <div class="chat-header">
+        <i class="bi bi-chat-dots me-2"></i>¿Cómo podemos ayudarte?
+      </div>
+      <div id="chat-mensajes"></div>
+      <form id="chat-form">
+        <input id="chat-input" type="text" placeholder="Escribe tu pregunta..." class="form-control">
+        <button type="submit" class="btn">Enviar</button>
+      </form>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script type="module" src="js/main.js"></script>
