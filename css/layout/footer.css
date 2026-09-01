@@ -1,6 +1,6 @@
 .site-footer {
   padding: 2rem 0;
-  background: #0f172a;
+  background: var(--color-text);
   color: var(--color-white);
   text-align: center;
 }

@@ -3,6 +3,7 @@ import { renderCatalogo } from './components/renderCatalogo.js';
 import { renderGaleria } from './components/renderGaleria.js';
 import { initWhatsappButton } from './components/whatsappButton.js';
 import { initChatWidget } from './components/chatWidget.js';
+import { initFidelidadWidget } from './components/fidelidadWidget.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   renderCatalogo(productos, 'catalogo-grid');
@@ -10,4 +11,5 @@ document.addEventListener('DOMContentLoaded', () => {
   renderGaleria(maquinaGaleria, 'maquina-grid');
   initWhatsappButton('#btn-whatsapp');
   initChatWidget();
+  initFidelidadWidget();
 });

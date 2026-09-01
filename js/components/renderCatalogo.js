@@ -18,7 +18,7 @@ export function renderCatalogo(productos, containerId) {
     const price = createElement('div', 'precio', producto.precio);
     const description = createElement('p', 'descripcion', producto.descripcion);
     const button = createElement('a', 'btn btn-primary', 'Solicitar');
-    button.href = 'https://wa.me/593998968151?text=' + encodeURIComponent(`Hola, quiero más información sobre ${producto.nombre}`);
+    button.href = 'https://wa.me/593987426825?text=' + encodeURIComponent(`Hola, quiero más información sobre ${producto.nombre}`);
     button.target = '_blank';
     button.rel = 'noreferrer';
 
