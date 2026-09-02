@@ -1,6 +1,6 @@
 import { consultarEstrellas } from '../services/fidelidad.js';
 
-const META_ESTRELLAS = 5; // cuántas estrellas se necesitan para el descuento
+const META_ESTRELLAS = 10; // cuántas estrellas se necesitan para el descuento
 
 export function initFidelidadWidget() {
   const form = document.querySelector('#fidelidad-form');
