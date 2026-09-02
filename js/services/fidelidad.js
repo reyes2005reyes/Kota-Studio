@@ -1,14 +1,17 @@
-import { db } from '../config/firebase.js';
-import { doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js';
+const BACKEND_URL = 'https://kota-studio-tqh7.onrender.com';
 
 export async function consultarEstrellas(telefono) {
   const telefonoLimpio = telefono.replace(/\s+|\+/g, '');
-  const ref = doc(db, 'clientes', telefonoLimpio);
-  const snap = await getDoc(ref);
 
-  if (!snap.exists()) {
+  const res = await fetch(`${BACKEND_URL}/api/estrellas/${telefonoLimpio}`);
+
+  if (res.status === 404) {
     return null; // cliente no encontrado
   }
 
-  return snap.data(); // { nombre, estrellas, ultimaCompra }
+  if (!res.ok) {
+    throw new Error('Error al consultar estrellas');
+  }
+
+  return res.json(); // { nombre, estrellas, ultimaCompra }
 }
