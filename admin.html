@@ -10,13 +10,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
+<body class="admin-page">
 
-  <div class="container py-5" style="max-width: 480px;">
+  <div class="container">
+    <div class="admin-brand">
+      <img src="assets/img/logo/logo.jpg" alt="Logo Kota estación" class="admin-brand__logo">
+      <p class="admin-brand__name">Kota estación</p>
+      <p class="admin-brand__caption">Panel de administración</p>
+    </div>
 
     <!-- LOGIN -->
     <div id="login-box">
-      <h2 class="section-title text-center mb-4">Panel Administrador</h2>
+      <h1 class="section-title text-center mb-4">Iniciar sesión</h1>
       <form id="login-form">
         <div class="mb-3">
           <input id="admin-password" type="password" class="form-control" placeholder="Contraseña" required>
@@ -28,7 +33,7 @@
 
     <!-- PANEL (oculto hasta hacer login) -->
     <div id="admin-panel" class="d-none">
-      <h2 class="section-title text-center mb-4">Sumar Estrella</h2>
+      <h2 class="section-title text-center mb-4">Sumar estrella</h2>
       <form id="estrella-form">
         <div class="mb-3">
           <input id="cliente-telefono" type="tel" class="form-control" placeholder="Teléfono del cliente" required>

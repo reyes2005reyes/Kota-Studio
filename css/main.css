@@ -852,6 +852,40 @@ h1, h2, h3, .navbar-brand, .eyebrow {
   box-shadow: 0 20px 45px rgba(17, 17, 17, 0.12);
 }
 
+.admin-brand {
+  display: grid;
+  justify-items: center;
+  gap: 0.25rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.admin-brand__logo {
+  width: min(100%, 190px);
+  height: 64px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.admin-brand__name,
+.admin-brand__caption {
+  margin: 0;
+}
+
+.admin-brand__name {
+  color: var(--primary-dark);
+  font-family: 'Caveat', cursive;
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.admin-brand__caption {
+  color: var(--muted);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .admin-page .section-title {
   color: var(--text);
   font-size: clamp(1.8rem, 4vw, 2.25rem);
