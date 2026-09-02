@@ -148,14 +148,14 @@ h1, h2, h3, .navbar-brand, .eyebrow {
 
 .hero-slide-1 {
   background-image:
-    linear-gradient(135deg, rgba(184, 67, 97, 0.42), rgba(217, 107, 133, 0.32)),
+    linear-gradient(135deg, rgba(15, 23, 33, 0.18), rgba(15, 23, 33, 0.08)),
     url('../assets/img/logo/fondo.jpg');
   animation-delay: 0s;
 }
 
 .hero-slide-2 {
   background-image:
-    linear-gradient(135deg, rgba(184, 67, 97, 0.42), rgba(217, 107, 133, 0.32)),
+    linear-gradient(135deg, rgba(15, 23, 33, 0.18), rgba(15, 23, 33, 0.08)),
     url('../assets/img/logo/fondo1.jpg');
   background-position: 30% center;
   animation-delay: 5s;
@@ -163,7 +163,7 @@ h1, h2, h3, .navbar-brand, .eyebrow {
 
 .hero-slide-3 {
   background-image:
-    linear-gradient(135deg, rgba(184, 67, 97, 0.42), rgba(217, 107, 133, 0.32)),
+    linear-gradient(135deg, rgba(15, 23, 33, 0.18), rgba(15, 23, 33, 0.08)),
     url('../assets/img/logo/fondo2.jpg');
   background-position: 70% center;
   animation-delay: 10s;

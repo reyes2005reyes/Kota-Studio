@@ -102,7 +102,7 @@ export const faqData = [
   // SALUDOS / GENÉRICOS
   {
     keywords: ['hola', 'buenas', 'buenos días', 'buenas tardes'],
-    respuesta: '¡Hola! Soy el asistente virtual de Kota Studio. Puedes preguntarme sobre precios, materiales, tiempos de entrega o cómo cotizar tu proyecto.'
+    respuesta: '¡Hola! Soy el asistente virtual de Kota estación. Puedes preguntarme sobre precios, materiales, tiempos de entrega o cómo cotizar tu proyecto.'
   },
   {
     keywords: ['gracias', 'muchas gracias', 'ok gracias'],

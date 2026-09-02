@@ -40,7 +40,7 @@ const transporter = nodemailer.createTransport({
 async function enviarAlertaSeguridad(datos) {
   try {
     await transporter.sendMail({
-      from: `"Kota Studio - Alertas" <${process.env.SMTP_USER}>`,
+      from: `"Kota estación - Alertas" <${process.env.SMTP_USER}>`,
       to: process.env.SMTP_USER,
       subject: '⚠️ Alerta de seguridad - Panel Admin',
       html: `
@@ -149,6 +149,6 @@ app.get('/api/estrellas/:telefono', async (req, res) => {
   }
 });
 
-app.get('/', (req, res) => res.send('Kota Studio backend activo ✅'));
+app.get('/', (req, res) => res.send('Kota estación backend activo ✅'));
 
 app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));

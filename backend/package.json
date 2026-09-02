@@ -1,7 +1,7 @@
 {
   "name": "kota-studio-backend",
   "version": "1.0.0",
-  "description": "Backend de Kota Studio: login admin, programa de fidelidad y alertas de seguridad",
+  "description": "Backend de Kota estación: login admin, programa de fidelidad y alertas de seguridad",
   "main": "server.js",
   "type": "module",
   "scripts": {
