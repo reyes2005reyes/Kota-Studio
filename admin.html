@@ -32,6 +32,24 @@
 
     <!-- PANEL (oculto hasta hacer login) -->
     <div id="admin-panel" class="d-none">
+      <section class="admin-stats" aria-labelledby="stats-title">
+        <h2 id="stats-title" class="section-title text-center mb-4">Estadísticas</h2>
+        <div class="admin-stats-grid">
+          <article class="admin-stat-card">
+            <span>Clientes registrados</span>
+            <strong id="stats-clientes">-</strong>
+          </article>
+          <article class="admin-stat-card">
+            <span>Estrellas acumuladas</span>
+            <strong id="stats-estrellas">-</strong>
+          </article>
+          <article class="admin-stat-card">
+            <span>Recompensas disponibles</span>
+            <strong id="stats-recompensas">-</strong>
+          </article>
+        </div>
+        <p id="stats-resultado" class="text-center mt-3 mb-4"></p>
+      </section>
       <h2 class="section-title text-center mb-4">Sumar estrella</h2>
       <form id="estrella-form">
         <div class="mb-3">

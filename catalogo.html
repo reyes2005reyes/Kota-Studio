@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo y precios | Kota Space</title>
+  <meta name="description" content="Consulta los precios de servicios, materiales y trabajos arquitectónicos de Kota Space.">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html#inicio" aria-label="Kota Space inicio">
+          <img src="assets/img/logo/logo.jpg" alt="Logo Kota Space" class="brand-logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Abrir menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="index.html#servicios">Servicios</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="catalogo.html">Precios y servicios</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#materiales">Materiales</a></li>
+            <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+            <li class="nav-item ms-lg-3"><a class="btn btn-primary btn-sm" href="https://wa.me/593987426825?text=Hola%2C%20quiero%20consultar%20un%20servicio" target="_blank" rel="noreferrer">Cotizar</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="catalogo" class="section alt-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="eyebrow center">Lista de precios</p>
+          <h1>Servicios, materiales y productos</h1>
+        </div>
+        <div class="catalogo-toolbar">
+          <label class="visually-hidden" for="catalogo-busqueda">Buscar en el catálogo</label>
+          <div class="catalogo-search">
+            <i class="bi bi-search" aria-hidden="true"></i>
+            <input id="catalogo-busqueda" type="search" placeholder="Buscar servicios, materiales o precios..." autocomplete="off">
+          </div>
+        </div>
+        <div id="catalogo-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">Kota Space</p>
+      <p class="mb-0">Maquetas arquitectónicas y corte láser.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module">
+    import { productos } from './js/data/productos.js';
+    import { renderCatalogo } from './js/components/renderCatalogo.js';
+    renderCatalogo(productos, 'catalogo-grid');
+  </script>
+</body>
+</html>

@@ -1,36 +1,26 @@
 export const productos = [
-  {
-    id: 1,
-    nombre: 'Corte y grabado láser',
-    precio: 'Desde $35',
-    descripcion: 'Servicios para maquetas, arquitectura y prototipos con acabados precisos y limpieza profesional.',
-    imagen: 'assets/img/catalogo/producto-1.svg',
-  },
-  {
-    id: 2,
-    nombre: 'Impresión arquitectónica',
-    precio: 'Desde $25',
-    descripcion: 'Planos, banners y láminas en alta resolución para presentaciones y proyectos de diseño.',
-    imagen: 'assets/img/catalogo/producto-2.svg',
-  },
-  {
-    id: 3,
-    nombre: 'Materiales para maquetas',
-    precio: 'Desde $12',
-    descripcion: 'MDF, acrílico, balsa, cartón, corcho y materiales especializados para tu trabajo.',
-    imagen: 'assets/img/catalogo/producto-3.svg',
-  },
-];
-
-export const galeria = [
-  'assets/img/galeria/galeria-1.svg',
-  'assets/img/galeria/galeria-2.svg',
-  'assets/img/galeria/galeria-3.svg',
-  'assets/img/galeria/galeria-4.svg',
-  'assets/img/galeria/galeria-1.svg',
-  'assets/img/galeria/galeria-2.svg',
-  'assets/img/galeria/galeria-3.svg',
-  'assets/img/galeria/galeria-4.svg',
+  { id: 1, categoria: 'Planos - hasta 400 m2', nombre: 'Planos arquitectónicos básico', precio: '$8.00', descripcion: 'Limpieza de plano, organización de capas, nombres y ambientación.', imagen: 'assets/img/catalogo/producto-1.svg' },
+  { id: 2, categoria: 'Planos - hasta 400 m2', nombre: 'Planos arquitectónicos pro', precio: '$13.00', descripcion: 'Planta terminada, cotas, ejes, mobiliario, grosores y ambientación.', imagen: 'assets/img/catalogo/producto-1.svg' },
+  { id: 3, categoria: 'Planos - hasta 400 m2', nombre: 'Planos arquitectónicos full', precio: '$50.00', descripcion: 'Plantas, fachadas, cortes, ambientación, mobiliario, cotas y ejes.', imagen: 'assets/img/catalogo/producto-1.svg' },
+  { id: 4, categoria: 'Planos - hasta 1000 m2', nombre: 'Planos arquitectónicos básico', precio: '$10.00', descripcion: 'Limpieza de plano, organización de capas, nombres y ambientación.', imagen: 'assets/img/catalogo/producto-1.svg' },
+  { id: 5, categoria: 'Planos - hasta 1000 m2', nombre: 'Planos arquitectónicos pro', precio: '$17.00', descripcion: 'Planta terminada, cotas, ejes, mobiliario, grosores y ambientación.', imagen: 'assets/img/catalogo/producto-1.svg' },
+  { id: 6, categoria: 'Planos - hasta 1000 m2', nombre: 'Planos arquitectónicos full', precio: '$50.00', descripcion: 'Plantas, fachadas, cortes, ambientación, mobiliario, cotas y ejes.', imagen: 'assets/img/catalogo/producto-1.svg' },
+  { id: 7, categoria: 'Láminas arquitectónicas - básico', nombre: 'Lámina A3', precio: '$3.00', descripcion: 'Composición, diagramación, dos borradores, texto, simbología básica y membrete.', imagen: 'assets/img/catalogo/producto-2.svg' },
+  { id: 8, categoria: 'Láminas arquitectónicas - básico', nombre: 'Lámina A2', precio: '$7.00', descripcion: 'Composición, diagramación, dos borradores, texto, simbología básica y membrete.', imagen: 'assets/img/catalogo/producto-2.svg' },
+  { id: 9, categoria: 'Láminas arquitectónicas - básico', nombre: 'Lámina A1', precio: '$10.00', descripcion: 'Composición, diagramación, dos borradores, texto, simbología básica y membrete.', imagen: 'assets/img/catalogo/producto-2.svg' },
+  { id: 10, categoria: 'Láminas arquitectónicas - básico', nombre: 'Lámina A0', precio: '$15.00', descripcion: 'Composición, diagramación, dos borradores, texto, simbología básica y membrete.', imagen: 'assets/img/catalogo/producto-2.svg' },
+  { id: 11, categoria: 'Láminas arquitectónicas - pro', nombre: 'Lámina A3', precio: '$5.00', descripcion: 'Incluye lo básico, diagramas, renders, isometrías, ambientación, personas y sombras.', imagen: 'assets/img/catalogo/producto-2.svg' },
+  { id: 12, categoria: 'Láminas arquitectónicas - pro', nombre: 'Lámina A2', precio: '$10.00', descripcion: 'Incluye lo básico, diagramas, renders, isometrías, ambientación, personas y sombras.', imagen: 'assets/img/catalogo/producto-2.svg' },
+  { id: 13, categoria: 'Láminas arquitectónicas - pro', nombre: 'Lámina A1', precio: '$15.00', descripcion: 'Incluye lo básico, diagramas, renders, isometrías, ambientación, personas y sombras.', imagen: 'assets/img/catalogo/producto-2.svg' },
+  { id: 14, categoria: 'Láminas arquitectónicas - pro', nombre: 'Lámina A0', precio: '$20.00', descripcion: 'Incluye lo básico, diagramas, renders, isometrías, ambientación, personas y sombras.', imagen: 'assets/img/catalogo/producto-2.svg' },
+  { id: 15, categoria: 'Láminas arquitectónicas - full', nombre: 'Lámina A3', precio: '$7.00', descripcion: 'Incluye postproducción, diagramas, renders y gráficos personalizados.', imagen: 'assets/img/catalogo/producto-2.svg' },
+  { id: 16, categoria: 'Láminas arquitectónicas - full', nombre: 'Lámina A2', precio: '$13.00', descripcion: 'Incluye postproducción, diagramas, renders y gráficos personalizados.', imagen: 'assets/img/catalogo/producto-2.svg' },
+  { id: 17, categoria: 'Láminas arquitectónicas - full', nombre: 'Lámina A1', precio: '$20.00', descripcion: 'Incluye postproducción, diagramas, renders y gráficos personalizados.', imagen: 'assets/img/catalogo/producto-2.svg' },
+  { id: 18, categoria: 'Láminas arquitectónicas - full', nombre: 'Lámina A0', precio: '$30.00', descripcion: 'Incluye postproducción, diagramas, renders y gráficos personalizados.', imagen: 'assets/img/catalogo/producto-2.svg' },
+  { id: 19, categoria: 'Materiales', nombre: 'Materiales para maquetas', precio: 'Consultar precio', descripcion: 'MDF, balsa, paja, corrugado, microcorrugado, acrílicos y corcho.', imagen: 'assets/img/catalogo/producto-3.svg' },
+  { id: 20, categoria: 'Servicios especiales', nombre: 'Servicio de maquetas', precio: 'Se necesita cotizar', descripcion: 'Servicio personalizado para tu proyecto arquitectónico.', imagen: 'assets/img/catalogo/producto-1.svg' },
+  { id: 21, categoria: 'Servicios especiales', nombre: 'Servicio de impresión 3D', precio: 'Se necesita cotizar', descripcion: 'Diseño, creación y pintura del modelo 3D. El envío se cobra aparte.', imagen: 'assets/img/catalogo/producto-1.svg' },
+  { id: 22, categoria: 'Servicios especiales', nombre: 'Entrega a universidades', precio: '$3.00', descripcion: 'Aplica para UPS, PUCE, Central y EPN. Otros lugares se cobran como Uber.', imagen: 'assets/img/catalogo/producto-3.svg' },
 ];
 
 export const maquinaGaleria = [

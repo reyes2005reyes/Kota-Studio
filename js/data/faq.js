@@ -96,7 +96,7 @@ export const faqData = [
   // GALERÍA / TRABAJOS PREVIOS
   {
     keywords: ['trabajos', 'portafolio', 'ejemplos', 'ver trabajos anteriores', 'galería'],
-    respuesta: 'Puedes ver ejemplos de trabajos anteriores en la sección de Galería de la página.'
+    respuesta: 'Puedes consultar nuestros servicios y solicitar una cotización desde la página de Precios y servicios.'
   },
 
   // SALUDOS / GENÉRICOS

@@ -24,6 +24,16 @@ const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN; // ej: https://reyes2005reyes
 app.use(cors({ origin: ALLOWED_ORIGIN }));
 app.use(express.json());
 
+function escaparHtml(valor = '') {
+  return String(valor).replace(/[&<>"']/g, (caracter) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  }[caracter]));
+}
+
 // Control de intentos en memoria (simple, suficiente para 1 solo admin)
 let intentosFallidos = 0;
 let bloqueadoHasta = null;
@@ -58,6 +68,45 @@ async function enviarAlertaSeguridad(datos) {
     console.error('Error enviando correo:', err);
   }
 }
+
+// ==== RUTA: CONTACTO PÚBLICO ====
+app.post('/api/contacto', async (req, res) => {
+  const { nombre, telefono, email, mensaje } = req.body;
+
+  if (!nombre || !telefono || !email || !mensaje) {
+    return res.status(400).json({ error: 'Completa todos los campos' });
+  }
+
+  const datos = {
+    nombre: escaparHtml(nombre),
+    telefono: escaparHtml(telefono),
+    email: escaparHtml(email),
+    mensaje: escaparHtml(mensaje).replace(/\n/g, '<br>')
+  };
+
+  try {
+    await transporter.sendMail({
+      from: `"Kota Space - Contacto" <${process.env.SMTP_USER}>`,
+      to: process.env.SMTP_USER,
+      replyTo: email,
+      subject: `Nuevo mensaje de ${datos.nombre}`,
+      html: `
+        <div style="font-family: sans-serif; max-width: 560px;">
+          <h2 style="color:#0D1117;">Nuevo mensaje desde Kota Space</h2>
+          <p><strong>Nombre:</strong> ${datos.nombre}</p>
+          <p><strong>Celular/WhatsApp:</strong> ${datos.telefono}</p>
+          <p><strong>Correo:</strong> ${datos.email}</p>
+          <p><strong>Mensaje:</strong></p>
+          <p>${datos.mensaje}</p>
+        </div>
+      `
+    });
+    res.json({ ok: true });
+  } catch (err) {
+    console.error('Error enviando mensaje de contacto:', err);
+    res.status(500).json({ error: 'No se pudo enviar el mensaje' });
+  }
+});
 
 // ==== RUTA: LOGIN ADMIN ====
 app.post('/api/login', async (req, res) => {
@@ -132,6 +181,30 @@ app.post('/api/sumar-estrella', verificarToken, async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Error al guardar en la base de datos' });
+  }
+});
+
+// ==== RUTA: ESTADÍSTICAS DEL PANEL (protegida) ====
+app.get('/api/estadisticas', verificarToken, async (req, res) => {
+  try {
+    const snapshot = await db.collection('clientes').get();
+    let estrellas = 0;
+    let clientesConRecompensa = 0;
+
+    snapshot.forEach((documento) => {
+      const cantidad = Number(documento.data().estrellas) || 0;
+      estrellas += cantidad;
+      if (cantidad >= 10) clientesConRecompensa++;
+    });
+
+    res.json({
+      clientes: snapshot.size,
+      estrellas,
+      clientesConRecompensa
+    });
+  } catch (err) {
+    console.error('Error consultando estadísticas:', err);
+    res.status(500).json({ error: 'No se pudieron cargar las estadísticas' });
   }
 });
 

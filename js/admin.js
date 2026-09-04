@@ -8,6 +8,31 @@ const estrellaForm = document.querySelector('#estrella-form');
 const resultado = document.querySelector('#estrella-resultado');
 const passwordInput = document.querySelector('#admin-password');
 const submitBtn = loginForm.querySelector('button[type="submit"]');
+const statsResultado = document.querySelector('#stats-resultado');
+
+async function cargarEstadisticas() {
+  try {
+    const res = await fetch(`${BACKEND_URL}/api/estadisticas`, {
+      headers: { 'Authorization': `Bearer ${getToken()}` }
+    });
+    const data = await res.json();
+
+    if (res.status === 401) {
+      clearToken();
+      mostrarLogin();
+      return;
+    }
+    if (!res.ok) throw new Error(data.error || 'Error al cargar estadísticas');
+
+    document.querySelector('#stats-clientes').textContent = data.clientes;
+    document.querySelector('#stats-estrellas').textContent = data.estrellas;
+    document.querySelector('#stats-recompensas').textContent = data.clientesConRecompensa;
+    statsResultado.textContent = '';
+  } catch (err) {
+    statsResultado.textContent = 'No se pudieron cargar las estadísticas.';
+    console.error(err);
+  }
+}
 
 // ==== SESIÓN (guarda el token en el navegador mientras dura, 2h) ====
 function getToken() {
@@ -35,6 +60,7 @@ function mostrarLogin() {
 // Si ya hay un token guardado (sesión previa), muestra el panel directo
 if (getToken()) {
   mostrarPanel();
+  cargarEstadisticas();
 }
 
 // ==== LOGIN ====
@@ -64,6 +90,7 @@ loginForm.addEventListener('submit', async (e) => {
 
     setToken(data.token);
     mostrarPanel();
+    cargarEstadisticas();
   } catch (err) {
     loginError.textContent = 'No se pudo conectar al servidor. Intenta de nuevo en unos segundos (el servidor puede tardar en despertar).';
     console.error(err);
@@ -112,6 +139,7 @@ estrellaForm.addEventListener('submit', async (e) => {
 
     resultado.textContent = '¡Estrella sumada correctamente!';
     estrellaForm.reset();
+    cargarEstadisticas();
   } catch (err) {
     resultado.textContent = 'No se pudo conectar al servidor. Intenta de nuevo.';
     console.error(err);

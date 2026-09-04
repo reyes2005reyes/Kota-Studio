@@ -25,3 +25,13 @@ python -m http.server 8000
 ```
 
 Luego visita `http://localhost:8000`.
+
+## Correo del formulario de contacto
+
+El backend necesita estas variables en su archivo `.env` para enviar los mensajes:
+
+```env
+SMTP_USER=tu-correo@gmail.com
+SMTP_APP_PASSWORD=tu-clave-de-aplicacion
+ALLOWED_ORIGIN=http://localhost:8000
+```
