@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { WHATSAPP_NUMBER } from '../js/config/constants.js';
 import { buildWhatsappLink } from '../js/services/contactoService.js';
 import { maquinaGaleria, productos } from '../js/data/productos.js';
+import { buscarRespuesta } from '../js/services/faqMatcher.js';
 
 test('config exporta el número de WhatsApp', () => {
   assert.equal(typeof WHATSAPP_NUMBER, 'string');
@@ -39,6 +40,15 @@ test('la página de contacto incluye el formulario por correo', async () => {
   assert.match(componente, /\/api\/contacto/);
 });
 
+test('el sitio muestra la nueva dirección', async () => {
+  const inicio = await import('node:fs/promises').then((fs) => fs.readFile('index.html', 'utf8'));
+  const contacto = await import('node:fs/promises').then((fs) => fs.readFile('contacto.html', 'utf8'));
+  assert.match(inicio, /Miguel de Santiago, y C\. 4, 170806 Quito/);
+  assert.match(contacto, /Miguel de Santiago, y C\. 4, 170806 Quito/);
+  assert.doesNotMatch(inicio, /La Gasca|Mena de Valenzuela|Equifrio/);
+  assert.doesNotMatch(contacto, /La Gasca|Mena de Valenzuela/);
+});
+
 test('el catálogo utiliza la lista de precios del Excel', () => {
   assert.ok(productos.some((producto) => producto.precio === '$8.00'));
   assert.ok(productos.some((producto) => producto.precio === '$30.00'));
@@ -71,4 +81,21 @@ test('el panel admin incluye dashboard y gestión de clientes', async () => {
   assert.match(html, /id=["']refresh-stats["']/i);
   assert.match(script, /\/api\/clientes/);
   assert.match(backend, /app\.get\(['"]\/api\/clientes['"], verificarToken/);
+});
+
+test('la barra lateral del admin requiere una sesión autenticada', async () => {
+  const html = await import('node:fs/promises').then((fs) => fs.readFile('admin.html', 'utf8'));
+  const estilos = await import('node:fs/promises').then((fs) => fs.readFile('css/main.css', 'utf8'));
+  const script = await import('node:fs/promises').then((fs) => fs.readFile('js/admin.js', 'utf8'));
+  assert.match(html, /class="admin-sidebar"/);
+  assert.match(estilos, /\.admin-sidebar\s*\{\s*display:\s*none/);
+  assert.match(estilos, /\.admin-page\.is-authenticated \.admin-sidebar/);
+  assert.match(script, /document\.body\.classList\.add\('is-authenticated'\)/);
+});
+
+test('el asistente responde con los datos actuales del catálogo', () => {
+  assert.match(buscarRespuesta('¿Cuánto cuestan los planos de 400 m2?'), /Básico \$8\.00, Pro \$13\.00 y Full \$50\.00/);
+  assert.match(buscarRespuesta('¿Qué materiales tienen?'), /MDF, balsa, paja, corrugado, microcorrugado, acrílicos y corcho/);
+  assert.match(buscarRespuesta('¿Cuál es el horario?'), /lunes a sábado, de 9:00 a 18:00/);
+  assert.match(buscarRespuesta('¿Dónde están ubicados?'), /Miguel de Santiago, y C\. 4, 170806 Quito/);
 });

@@ -91,11 +91,13 @@ function clearToken() {
 }
 
 function mostrarPanel() {
+  document.body.classList.add('is-authenticated');
   loginBox.classList.add('d-none');
   adminPanel.classList.remove('d-none');
 }
 
 function mostrarLogin() {
+  document.body.classList.remove('is-authenticated');
   loginBox.classList.remove('d-none');
   adminPanel.classList.add('d-none');
 }
