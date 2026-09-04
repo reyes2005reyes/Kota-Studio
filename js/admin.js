@@ -12,7 +12,25 @@ const statsResultado = document.querySelector('#stats-resultado');
 const clientesLista = document.querySelector('#clientes-lista');
 const clientesBusqueda = document.querySelector('#clientes-busqueda');
 const clientCount = document.querySelector('#client-count');
+const menuToggle = document.querySelector('#admin-menu-toggle');
+const sidebarLinks = document.querySelectorAll('.admin-nav__link, .admin-sidebar__home');
 let clientes = [];
+
+function cerrarMenu() {
+  document.body.classList.remove('admin-menu-open');
+  menuToggle.setAttribute('aria-expanded', 'false');
+  menuToggle.setAttribute('aria-label', 'Abrir menú');
+  menuToggle.innerHTML = '<i class="bi bi-list"></i>';
+}
+
+menuToggle.addEventListener('click', () => {
+  const abierto = document.body.classList.toggle('admin-menu-open');
+  menuToggle.setAttribute('aria-expanded', String(abierto));
+  menuToggle.setAttribute('aria-label', abierto ? 'Cerrar menú' : 'Abrir menú');
+  menuToggle.innerHTML = `<i class="bi bi-${abierto ? 'x-lg' : 'list'}"></i>`;
+});
+
+sidebarLinks.forEach((link) => link.addEventListener('click', cerrarMenu));
 
 function formatoFecha(fecha) {
   if (!fecha) return 'Sin registros';
@@ -97,6 +115,7 @@ function mostrarPanel() {
 }
 
 function mostrarLogin() {
+  cerrarMenu();
   document.body.classList.remove('is-authenticated');
   loginBox.classList.remove('d-none');
   adminPanel.classList.add('d-none');

@@ -93,6 +93,15 @@ test('la barra lateral del admin requiere una sesión autenticada', async () => 
   assert.match(script, /document\.body\.classList\.add\('is-authenticated'\)/);
 });
 
+test('el panel admin incluye menú hamburguesa para móvil', async () => {
+  const html = await import('node:fs/promises').then((fs) => fs.readFile('admin.html', 'utf8'));
+  const estilos = await import('node:fs/promises').then((fs) => fs.readFile('css/main.css', 'utf8'));
+  const script = await import('node:fs/promises').then((fs) => fs.readFile('js/admin.js', 'utf8'));
+  assert.match(html, /id=["']admin-menu-toggle["']/i);
+  assert.match(estilos, /transform: translateX\(-100%\)/);
+  assert.match(script, /admin-menu-open/);
+});
+
 test('el asistente responde con los datos actuales del catálogo', () => {
   assert.match(buscarRespuesta('¿Cuánto cuestan los planos de 400 m2?'), /Básico \$8\.00, Pro \$13\.00 y Full \$50\.00/);
   assert.match(buscarRespuesta('¿Qué materiales tienen?'), /MDF, balsa, paja, corrugado, microcorrugado, acrílicos y corcho/);

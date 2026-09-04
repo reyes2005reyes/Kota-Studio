@@ -1074,6 +1074,12 @@ h1, h2, h3, .navbar-brand, .eyebrow {
   gap: 1rem;
 }
 
+.admin-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
 .admin-topbar { margin-bottom: 2.5rem; }
 .admin-topbar h1,
 .admin-section-heading h2 { margin: 0; color: #102a43; }
@@ -1095,6 +1101,17 @@ h1, h2, h3, .navbar-brand, .eyebrow {
 .admin-logout:hover,
 .admin-icon-button:hover { border-color: #f3a2be; color: #102a43; }
 .admin-icon-button { width: 42px; height: 42px; padding: 0; font-size: 1.05rem; }
+
+.admin-menu-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #d7e0e9;
+  border-radius: 0.5rem;
+  background: #fff;
+  color: #102a43;
+  font-size: 1.25rem;
+}
 
 .admin-stats { margin-bottom: 2rem; }
 
@@ -1216,11 +1233,33 @@ h1, h2, h3, .navbar-brand, .eyebrow {
 
 @media (max-width: 900px) {
   .admin-shell { grid-template-columns: 1fr; }
-  .admin-sidebar { padding: 1rem; }
+  .admin-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 1000;
+    width: min(82vw, 280px);
+    padding: 1.5rem 1rem;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    box-shadow: 12px 0 30px rgba(16, 42, 67, 0.18);
+  }
+  .admin-page.is-authenticated .admin-sidebar { display: flex; }
+  .admin-page.is-authenticated.admin-menu-open .admin-sidebar { transform: translateX(0); }
+  .admin-page.admin-menu-open::after {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    content: '';
+    background: rgba(16, 42, 67, 0.42);
+  }
   .admin-brand { margin-bottom: 1rem; }
   .admin-brand__logo { width: 125px; height: 42px; }
-  .admin-nav { grid-template-columns: repeat(3, 1fr); }
-  .admin-nav__link { justify-content: center; }
-  .admin-sidebar__home { margin-top: 1rem; justify-content: center; }
+  .admin-nav { grid-template-columns: 1fr; }
+  .admin-nav__link { justify-content: flex-start; }
+  .admin-sidebar__home { margin-top: auto; justify-content: flex-start; }
+  .admin-menu-toggle { display: block; }
   .admin-content-grid { grid-template-columns: 1fr; }
+  .admin-workspace { padding: 1.25rem 1rem; }
+  .admin-topbar { align-items: flex-start; }
+  .admin-topbar h1 { max-width: 12rem; }
 }

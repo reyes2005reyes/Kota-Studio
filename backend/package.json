@@ -1,7 +1,7 @@
 {
   "name": "kota-studio-backend",
   "version": "1.0.0",
-  "description": "Backend de Kota Space: login admin, programa de fidelidad y alertas de seguridad",
+  "description": "Backend de Kota Studio: login admin, programa de fidelidad y alertas de seguridad",
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -13,7 +13,6 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "firebase-admin": "^12.3.1",
-    "jsonwebtoken": "^9.0.2",
-    "nodemailer": "^6.9.14"
+    "jsonwebtoken": "^9.0.2"
   }
 }

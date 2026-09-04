@@ -2,7 +2,6 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import jwt from 'jsonwebtoken';
-import nodemailer from 'nodemailer';
 import admin from 'firebase-admin';
 
 // ==== INICIALIZAR FIREBASE ADMIN (usa la Service Account Key, NUNCA en el frontend) ====
@@ -21,6 +20,10 @@ const MAX_INTENTOS = 3;
 const BLOQUEO_MINUTOS = 15;
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN; // ej: https://reyes2005reyes.github.io
 
+// ==== BREVO (envío de correo vía API HTTP, evita el bloqueo de puertos SMTP en Render) ====
+const BREVO_API_KEY = process.env.BREVO_API_KEY;
+const BREVO_SENDER_EMAIL = process.env.SMTP_USER; // el mismo correo que verificaste en Brevo
+
 app.use(cors({ origin: ALLOWED_ORIGIN }));
 app.use(express.json());
 
@@ -38,20 +41,36 @@ function escaparHtml(valor = '') {
 let intentosFallidos = 0;
 let bloqueadoHasta = null;
 
-// ==== TRANSPORTE DE CORREO (usa tu propio SMTP, ej. Gmail con App Password) ====
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_APP_PASSWORD
+// ==== FUNCIÓN GENÉRICA PARA ENVIAR CORREO VÍA BREVO ====
+async function enviarCorreo({ toEmail, replyTo, subject, html, fromName }) {
+  const res = await fetch('https://api.brevo.com/v3/smtp/email', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'api-key': BREVO_API_KEY
+    },
+    body: JSON.stringify({
+      sender: { name: fromName || 'Kota Space', email: BREVO_SENDER_EMAIL },
+      to: [{ email: toEmail }],
+      ...(replyTo ? { replyTo: { email: replyTo } } : {}),
+      subject,
+      htmlContent: html
+    })
+  });
+
+  if (!res.ok) {
+    const errorBody = await res.text();
+    throw new Error(`Brevo API error (${res.status}): ${errorBody}`);
   }
-});
+
+  return res.json();
+}
 
 async function enviarAlertaSeguridad(datos) {
   try {
-    await transporter.sendMail({
-      from: `"Kota Space - Alertas" <${process.env.SMTP_USER}>`,
-      to: process.env.SMTP_USER,
+    await enviarCorreo({
+      toEmail: BREVO_SENDER_EMAIL,
+      fromName: 'Kota Space - Alertas',
       subject: '⚠️ Alerta de seguridad - Panel Admin',
       html: `
         <div style="font-family: sans-serif; max-width: 480px;">
@@ -65,7 +84,7 @@ async function enviarAlertaSeguridad(datos) {
       `
     });
   } catch (err) {
-    console.error('Error enviando correo:', err);
+    console.error('Error enviando correo de alerta:', err);
   }
 }
 
@@ -85,10 +104,10 @@ app.post('/api/contacto', async (req, res) => {
   };
 
   try {
-    await transporter.sendMail({
-      from: `"Kota Space - Contacto" <${process.env.SMTP_USER}>`,
-      to: process.env.SMTP_USER,
+    await enviarCorreo({
+      toEmail: BREVO_SENDER_EMAIL,
       replyTo: email,
+      fromName: 'Kota Space - Contacto',
       subject: `Nuevo mensaje de ${datos.nombre}`,
       html: `
         <div style="font-family: sans-serif; max-width: 560px;">
@@ -132,7 +151,6 @@ app.post('/api/login', async (req, res) => {
     return res.status(401).json({ error: `Contraseña incorrecta. Intento ${intentosFallidos} de ${MAX_INTENTOS}.` });
   }
 
-  // Login correcto: resetea intentos y da un token válido por 2 horas
   intentosFallidos = 0;
   bloqueadoHasta = null;
   const token = jwt.sign({ role: 'admin' }, JWT_SECRET, { expiresIn: '2h' });
