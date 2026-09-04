@@ -9,6 +9,49 @@ const resultado = document.querySelector('#estrella-resultado');
 const passwordInput = document.querySelector('#admin-password');
 const submitBtn = loginForm.querySelector('button[type="submit"]');
 const statsResultado = document.querySelector('#stats-resultado');
+const clientesLista = document.querySelector('#clientes-lista');
+const clientesBusqueda = document.querySelector('#clientes-busqueda');
+const clientCount = document.querySelector('#client-count');
+let clientes = [];
+
+function formatoFecha(fecha) {
+  if (!fecha) return 'Sin registros';
+  return new Intl.DateTimeFormat('es-EC', { day: '2-digit', month: 'short', year: 'numeric' }).format(new Date(fecha));
+}
+
+function renderClientes(lista) {
+  clientCount.textContent = `${lista.length} ${lista.length === 1 ? 'cliente' : 'clientes'}`;
+  if (!lista.length) {
+    clientesLista.innerHTML = '<tr><td colspan="4" class="admin-table-empty">No se encontraron clientes.</td></tr>';
+    return;
+  }
+
+  clientesLista.replaceChildren(...lista.map((cliente) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `<th scope="row">${cliente.nombre}</th><td>${cliente.telefono}</td><td><strong>${cliente.estrellas}</strong> / 10</td><td>${formatoFecha(cliente.ultimaCompra)}</td>`;
+    return row;
+  }));
+}
+
+async function cargarClientes() {
+  try {
+    const res = await fetch(`${BACKEND_URL}/api/clientes`, {
+      headers: { 'Authorization': `Bearer ${getToken()}` }
+    });
+    const data = await res.json();
+    if (res.status === 401) {
+      clearToken();
+      mostrarLogin();
+      return;
+    }
+    if (!res.ok) throw new Error(data.error || 'Error al cargar clientes');
+    clientes = data.clientes;
+    renderClientes(clientes);
+  } catch (err) {
+    clientesLista.innerHTML = '<tr><td colspan="4" class="admin-table-empty">No se pudieron cargar los clientes.</td></tr>';
+    console.error(err);
+  }
+}
 
 async function cargarEstadisticas() {
   try {
@@ -61,7 +104,18 @@ function mostrarLogin() {
 if (getToken()) {
   mostrarPanel();
   cargarEstadisticas();
+  cargarClientes();
 }
+
+clientesBusqueda.addEventListener('input', () => {
+  const query = clientesBusqueda.value.trim().toLocaleLowerCase();
+  renderClientes(clientes.filter((cliente) => `${cliente.nombre} ${cliente.telefono}`.toLocaleLowerCase().includes(query)));
+});
+
+document.querySelector('#refresh-stats').addEventListener('click', () => {
+  cargarEstadisticas();
+  cargarClientes();
+});
 
 // ==== LOGIN ====
 loginForm.addEventListener('submit', async (e) => {
@@ -91,6 +145,7 @@ loginForm.addEventListener('submit', async (e) => {
     setToken(data.token);
     mostrarPanel();
     cargarEstadisticas();
+    cargarClientes();
   } catch (err) {
     loginError.textContent = 'No se pudo conectar al servidor. Intenta de nuevo en unos segundos (el servidor puede tardar en despertar).';
     console.error(err);

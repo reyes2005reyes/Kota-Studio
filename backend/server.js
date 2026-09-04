@@ -208,6 +208,27 @@ app.get('/api/estadisticas', verificarToken, async (req, res) => {
   }
 });
 
+// ==== RUTA: CLIENTES DEL PANEL (protegida) ====
+app.get('/api/clientes', verificarToken, async (req, res) => {
+  try {
+    const snapshot = await db.collection('clientes').get();
+    const clientes = snapshot.docs.map((documento) => {
+      const datos = documento.data();
+      return {
+        telefono: documento.id,
+        nombre: datos.nombre || 'Cliente',
+        estrellas: Number(datos.estrellas) || 0,
+        ultimaCompra: datos.ultimaCompra?.toDate?.()?.toISOString() || null
+      };
+    }).sort((a, b) => b.estrellas - a.estrellas);
+
+    res.json({ clientes });
+  } catch (err) {
+    console.error('Error consultando clientes:', err);
+    res.status(500).json({ error: 'No se pudieron cargar los clientes' });
+  }
+});
+
 // ==== RUTA: CONSULTAR ESTRELLAS (pública, la usa index.html) ====
 app.get('/api/estrellas/:telefono', async (req, res) => {
   const telefonoLimpio = req.params.telefono.replace(/\s+|\+/g, '');

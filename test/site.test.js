@@ -62,3 +62,13 @@ test('el catálogo vive en una página independiente', async () => {
   assert.match(inicio, /href=["']catalogo\.html["']/i);
   assert.doesNotMatch(inicio, /id=["']catalogo-grid["']/i);
 });
+
+test('el panel admin incluye dashboard y gestión de clientes', async () => {
+  const html = await import('node:fs/promises').then((fs) => fs.readFile('admin.html', 'utf8'));
+  const script = await import('node:fs/promises').then((fs) => fs.readFile('js/admin.js', 'utf8'));
+  const backend = await import('node:fs/promises').then((fs) => fs.readFile('backend/server.js', 'utf8'));
+  assert.match(html, /id=["']clientes-lista["']/i);
+  assert.match(html, /id=["']refresh-stats["']/i);
+  assert.match(script, /\/api\/clientes/);
+  assert.match(backend, /app\.get\(['"]\/api\/clientes['"], verificarToken/);
+});
