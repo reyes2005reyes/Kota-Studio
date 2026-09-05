@@ -777,6 +777,11 @@ h1, h2, h3, .navbar-brand, .eyebrow {
 }
 
 @media (max-width: 575.98px) {
+  .main > .row,
+  main .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
   .section { padding: 4rem 0; }
   .hero {
     min-height: 760px;
