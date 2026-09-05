@@ -1,4 +1,4 @@
-const BACKEND_URL = 'https://kota-studio-tqh7.onrender.com';
+import { BACKEND_URL } from './config/constants.js';
 
 const loginBox = document.querySelector('#login-box');
 const adminPanel = document.querySelector('#admin-panel');

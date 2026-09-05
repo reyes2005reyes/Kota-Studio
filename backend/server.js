@@ -263,4 +263,4 @@ app.get('/api/estrellas/:telefono', async (req, res) => {
 
 app.get('/', (req, res) => res.send('Kota Space backend activo ✅'));
 
-app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
+app.listen(PORT);

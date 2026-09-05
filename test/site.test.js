@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 
 import { WHATSAPP_NUMBER } from '../js/config/constants.js';
 import { buildWhatsappLink } from '../js/services/contactoService.js';
-import { maquinaGaleria, productos } from '../js/data/productos.js';
+import { productos } from '../js/data/productos.js';
 import { buscarRespuesta } from '../js/services/faqMatcher.js';
 
 test('config exporta el número de WhatsApp', () => {
@@ -25,11 +25,10 @@ test('la landing incluye el video de la máquina', async () => {
   assert.match(html, /loop/i);
 });
 
-test('la galería de la máquina incluye las imágenes de la máquina', async () => {
+test('la landing no incluye la galería de la máquina', async () => {
   const html = await import('node:fs/promises').then((fs) => fs.readFile('index.html', 'utf8'));
-  assert.ok(maquinaGaleria.length >= 4);
-  assert.ok(maquinaGaleria.every((src) => /assets\/img\/galeria\/maquina(?:1|2|3)?\.webp$/.test(src)));
-  assert.match(html, /id=["']maquina-grid["']/i);
+  assert.doesNotMatch(html, /id=["']maquina-grid["']/i);
+  assert.doesNotMatch(html, /La herramienta que impulsa cada pedido y cada maqueta/i);
 });
 
 test('la página de contacto incluye el formulario por correo', async () => {
@@ -40,13 +39,12 @@ test('la página de contacto incluye el formulario por correo', async () => {
   assert.match(componente, /\/api\/contacto/);
 });
 
-test('el sitio muestra la nueva dirección', async () => {
+test('el sitio muestra la dirección y mapa actuales', async () => {
   const inicio = await import('node:fs/promises').then((fs) => fs.readFile('index.html', 'utf8'));
   const contacto = await import('node:fs/promises').then((fs) => fs.readFile('contacto.html', 'utf8'));
   assert.match(inicio, /Miguel de Santiago, y C\. 4, 170806 Quito/);
   assert.match(contacto, /Miguel de Santiago, y C\. 4, 170806 Quito/);
-  assert.doesNotMatch(inicio, /La Gasca|Mena de Valenzuela|Equifrio/);
-  assert.doesNotMatch(contacto, /La Gasca|Mena de Valenzuela/);
+  assert.match(inicio, /2d-78\.49660062503546!3d-0\.2742305997230706/);
 });
 
 test('el catálogo utiliza la lista de precios del Excel', () => {
@@ -105,6 +103,6 @@ test('el panel admin incluye menú hamburguesa para móvil', async () => {
 test('el asistente responde con los datos actuales del catálogo', () => {
   assert.match(buscarRespuesta('¿Cuánto cuestan los planos de 400 m2?'), /Básico \$8\.00, Pro \$13\.00 y Full \$50\.00/);
   assert.match(buscarRespuesta('¿Qué materiales tienen?'), /MDF, balsa, paja, corrugado, microcorrugado, acrílicos y corcho/);
-  assert.match(buscarRespuesta('¿Cuál es el horario?'), /lunes a sábado, de 9:00 a 18:00/);
+  assert.match(buscarRespuesta('¿Cuál es el horario?'), /lunes a viernes, de 5:00 a 00:00, y los domingos de 15:00 a 00:00/);
   assert.match(buscarRespuesta('¿Dónde están ubicados?'), /Miguel de Santiago, y C\. 4, 170806 Quito/);
 });

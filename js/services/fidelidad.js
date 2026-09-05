@@ -1,4 +1,4 @@
-const BACKEND_URL = 'https://kota-studio-tqh7.onrender.com';
+import { BACKEND_URL } from '../config/constants.js';
 
 export async function consultarEstrellas(telefono) {
   const telefonoLimpio = telefono.replace(/\s+|\+/g, '');

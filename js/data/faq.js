@@ -40,7 +40,7 @@ export const faqData = [
   },
   {
     keywords: ['acrílico', 'acrilico', 'acrílicos', 'acrilicos'],
-    respuesta: 'Disponemos de acrílico en colores crudo, negro y blanco. Consulta disponibilidad, tamaño y espesor según tu proyecto.'
+    respuesta: 'Disponemos de acrílicos en diferentes colores y acabados. Consulta disponibilidad, tamaño y espesor según tu proyecto.'
   },
   {
     keywords: ['balsa', 'paja', 'corrugado', 'microcorrugado', 'corcho'],
@@ -94,7 +94,7 @@ export const faqData = [
   // CONTACTO Y UBICACIÓN
   {
     keywords: ['horario', 'atienden', 'abren', 'hora de atención'],
-    respuesta: 'Atendemos de lunes a sábado, de 9:00 a 18:00. Los domingos permanecemos cerrados.'
+    respuesta: 'Atendemos de lunes a viernes, de 5:00 a 00:00, y los domingos de 15:00 a 00:00. Los sábados permanecemos cerrados.'
   },
   {
     keywords: ['ubicación', 'dirección', 'dónde están', 'dónde quedan', 'local'],

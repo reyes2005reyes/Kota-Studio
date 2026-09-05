@@ -7,12 +7,10 @@ export function initChatWidget() {
   const chatToggle = document.querySelector('#chat-toggle');
   const chatWidget = document.querySelector('#chat-widget');
 
-  // Abrir/cerrar widget
   chatToggle.addEventListener('click', () => {
     chatWidget.classList.toggle('chat-open');
   });
 
-  // Enviar mensaje
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const pregunta = input.value.trim();
