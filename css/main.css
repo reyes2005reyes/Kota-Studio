@@ -1161,6 +1161,55 @@ h1, h2, h3, .navbar-brand, .eyebrow {
   .admin-panel-card {
     padding: 1rem;
   }
+  .admin-table-wrap {
+    overflow: visible;
+  }
+  .admin-table,
+  .admin-table tbody,
+  .admin-table tr {
+    display: block;
+    width: 100%;
+  }
+  .admin-table thead {
+    display: none;
+  }
+  .admin-table tbody tr {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem 0.75rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #edf1f5;
+  }
+  .admin-table tbody tr:last-child {
+    border-bottom: 0;
+  }
+  .admin-table th,
+  .admin-table td {
+    display: flex;
+    min-width: 0;
+    align-items: baseline;
+    gap: 0.35rem;
+    padding: 0;
+    border: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .admin-table tbody th {
+    grid-column: 1 / -1;
+    font-size: 0.92rem;
+  }
+  .admin-table tbody td::before {
+    content: attr(data-label) ":";
+    flex: 0 0 auto;
+    color: #728096;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .admin-table-empty {
+    display: block !important;
+    padding: 1rem 0 !important;
+  }
 }
 
 @media (max-width: 900px) {

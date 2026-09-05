@@ -46,7 +46,7 @@ function renderClientes(lista) {
 
   clientesLista.replaceChildren(...lista.map((cliente) => {
     const row = document.createElement('tr');
-    row.innerHTML = `<th scope="row">${cliente.nombre}</th><td>${cliente.telefono}</td><td><strong>${cliente.estrellas}</strong> / 10</td><td>${formatoFecha(cliente.ultimaCompra)}</td>`;
+    row.innerHTML = `<th scope="row">${cliente.nombre}</th><td data-label="Teléfono">${cliente.telefono}</td><td data-label="Estrellas"><strong>${cliente.estrellas}</strong> / 10</td><td data-label="Última compra">${formatoFecha(cliente.ultimaCompra)}</td>`;
     return row;
   }));
 }
