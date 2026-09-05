@@ -1218,7 +1218,8 @@ h1, h2, h3, .navbar-brand, .eyebrow {
 }
 
 @media (max-width: 900px) {
-  .admin-shell { grid-template-columns: 1fr; }
+  .admin-shell,
+  .admin-page.is-authenticated .admin-shell { grid-template-columns: 1fr; }
   .admin-sidebar {
     position: fixed;
     inset: 0 auto 0 0;
