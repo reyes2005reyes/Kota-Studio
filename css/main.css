@@ -484,6 +484,12 @@ h1, h2, h3, .navbar-brand, .eyebrow {
   border-bottom: 2px solid var(--primary);
 }
 
+.catalogo-grupo-description {
+  margin: -0.6rem 0 1.25rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
 .catalogo-table-wrapper {
   overflow-x: auto;
   border: 1px solid var(--line);

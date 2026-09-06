@@ -23,6 +23,12 @@ export function renderCatalogo(productos, containerId) {
     grupos.forEach((grupo, categoria) => {
       const section = createElement('section', 'catalogo-grupo');
       const heading = createElement('h3', 'catalogo-grupo-title', categoria);
+      const esCategoriaDeLaminas = categoria === 'Láminas arquitectónicas - básico'
+        || categoria === 'Láminas arquitectónicas - pro'
+        || categoria === 'Láminas arquitectónicas - full';
+      const groupDescription = esCategoriaDeLaminas
+        ? createElement('p', 'catalogo-grupo-description', grupo[0].descripcion)
+        : null;
       const tableWrapper = createElement('div', 'catalogo-table-wrapper');
       const table = document.createElement('table');
       table.className = 'catalogo-table';
@@ -31,7 +37,10 @@ export function renderCatalogo(productos, containerId) {
       caption.textContent = categoria;
       const head = document.createElement('thead');
       const headRow = document.createElement('tr');
-      ['Servicio o producto', 'Precio', 'Detalle', ''].forEach((texto) => {
+      const headers = esCategoriaDeLaminas
+        ? ['Servicio o producto', 'Precio', '']
+        : ['Servicio o producto', 'Precio', 'Detalle', ''];
+      headers.forEach((texto) => {
         const cell = document.createElement('th');
         cell.scope = 'col';
         cell.textContent = texto;
@@ -54,13 +63,15 @@ export function renderCatalogo(productos, containerId) {
         button.rel = 'noreferrer';
 
         actionCell.appendChild(button);
-        row.append(title, price, description, actionCell);
+        row.append(title, price, ...(esCategoriaDeLaminas ? [] : [description]), actionCell);
         body.appendChild(row);
       });
 
       table.append(caption, head, body);
       tableWrapper.appendChild(table);
-      section.append(heading, tableWrapper);
+      section.append(heading);
+      if (groupDescription) section.appendChild(groupDescription);
+      section.appendChild(tableWrapper);
       container.appendChild(section);
     });
   };
