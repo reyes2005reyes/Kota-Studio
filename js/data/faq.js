@@ -116,7 +116,7 @@ export const faqData = [
   },
   {
     keywords: ['hola', 'buenas', 'buenos días', 'buenas tardes'],
-    respuesta: '¡Hola! Soy el asistente virtual de Kota Space. Puedo ayudarte con precios, materiales, servicios, entregas, horarios y cotizaciones.'
+    respuesta: '¡Hola! Soy el asistente virtual de Kota Studio. Puedo ayudarte con precios, materiales, servicios, entregas, horarios y cotizaciones.'
   },
   {
     keywords: ['gracias', 'muchas gracias', 'ok gracias'],

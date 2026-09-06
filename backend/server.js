@@ -50,7 +50,7 @@ async function enviarCorreo({ toEmail, replyTo, subject, html, fromName }) {
       'api-key': BREVO_API_KEY
     },
     body: JSON.stringify({
-      sender: { name: fromName || 'Kota Space', email: BREVO_SENDER_EMAIL },
+      sender: { name: fromName || 'Kota Studio', email: BREVO_SENDER_EMAIL },
       to: [{ email: toEmail }],
       ...(replyTo ? { replyTo: { email: replyTo } } : {}),
       subject,
@@ -70,7 +70,7 @@ async function enviarAlertaSeguridad(datos) {
   try {
     await enviarCorreo({
       toEmail: BREVO_SENDER_EMAIL,
-      fromName: 'Kota Space - Alertas',
+      fromName: 'Kota Studio - Alertas',
       subject: '⚠️ Alerta de seguridad - Panel Admin',
       html: `
         <div style="font-family: sans-serif; max-width: 480px;">
@@ -107,11 +107,11 @@ app.post('/api/contacto', async (req, res) => {
     await enviarCorreo({
       toEmail: BREVO_SENDER_EMAIL,
       replyTo: email,
-      fromName: 'Kota Space - Contacto',
+      fromName: 'Kota Studio - Contacto',
       subject: `Nuevo mensaje de ${datos.nombre}`,
       html: `
         <div style="font-family: sans-serif; max-width: 560px;">
-          <h2 style="color:#0D1117;">Nuevo mensaje desde Kota Space</h2>
+          <h2 style="color:#0D1117;">Nuevo mensaje desde Kota Studio</h2>
           <p><strong>Nombre:</strong> ${datos.nombre}</p>
           <p><strong>Celular/WhatsApp:</strong> ${datos.telefono}</p>
           <p><strong>Correo:</strong> ${datos.email}</p>
@@ -261,6 +261,6 @@ app.get('/api/estrellas/:telefono', async (req, res) => {
   }
 });
 
-app.get('/', (req, res) => res.send('Kota Space backend activo ✅'));
+app.get('/', (req, res) => res.send('Kota Studio backend activo ✅'));
 
 app.listen(PORT);
