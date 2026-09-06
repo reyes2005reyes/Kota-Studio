@@ -113,13 +113,13 @@ h1, h2, h3, .navbar-brand, .eyebrow {
 .btn-primary {
   background: var(--color-primary-base);
   border: 1px solid var(--color-secondary-dark);
-  color: var(--color-secondary-dark);
+  color: #ffffff;
   box-shadow: 0 10px 22px rgba(0, 117, 153, 0.2);
 }
 
 .btn-primary:hover {
   background: #e88eaf;
-  color: var(--color-secondary-dark);
+  color: #ffffff;
 }
 
 .btn-outline-dark { color: var(--color-secondary-dark); border-color: var(--color-secondary-dark); }
